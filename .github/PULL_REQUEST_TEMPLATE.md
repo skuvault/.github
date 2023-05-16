@@ -8,7 +8,7 @@ Summary: <!-- Must be provided. In ONE sentence tell us what this PR accomplishe
 
 <!-- In a few sentences provice a description of the problem been resolved. -->
 
-## About the changes in this PR
+## About these changes
 
 <!--
 Help us understand what you did and why you did it. Provide a summary of your changes, including screenshots if appropriate.
