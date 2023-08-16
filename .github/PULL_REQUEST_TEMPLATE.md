@@ -6,7 +6,7 @@ Summary: <!-- Must be provided. In ONE sentence tell us what this PR accomplishe
 
 ## Background
 
-<!-- In a few sentences provice a description of the problem been resolved. -->
+<!-- In a few sentences provide a description of the problem been resolved. -->
 
 ## About these changes
 
@@ -22,7 +22,7 @@ Help us understand what you did and why you did it. Provide a summary of your ch
 - [ ] Code is documented, particularly public interfaces and hard-to-understand areas
 - [ ] Tests are updated / added and all pass
 - [ ] Performed a self-review of my own code
-- [ ] Acceptance criterias are confirmed by testing changes in UI (or another appropriate way)
+- [ ] Acceptance criteria are confirmed by testing changes in UI (or another appropriate way)
 - [ ] Confluence documentation is updated, if needed
 - [ ] New code does not generate new warnings
 
