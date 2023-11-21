@@ -23,4 +23,5 @@ jobs:
           type: now
           from_branch: ${{ inputs.source-branch }}
           target_branch: ${{ inputs.target-branch }}
+          message: Github Actions auto-merge
           github_token: ${{ secrets.GITHUB_TOKEN }}
