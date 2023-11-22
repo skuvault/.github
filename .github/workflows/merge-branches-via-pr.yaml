@@ -20,7 +20,7 @@ jobs:
 
     - name: Create pull request
       run: |
-        PR_URL=$(gh pr create --base ${{ inputs.target_branch }} --head ${{ inputs.source_branch }} --title "Auto-generated PR" --body "This PR was created via Github Actions " --json url -q '.url')
+        PR_URL=$(gh pr create --base ${{ inputs.target_branch }} --head ${{ inputs.source_branch }} --title "Auto-generated PR" --body "This PR was created via Github Actions ")
         echo "::set-output name=pr_url::$PR_URL"
 
     - name: Merge pull request
