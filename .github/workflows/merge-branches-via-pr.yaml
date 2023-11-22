@@ -1,0 +1,28 @@
+name: Merge a branch into another via PR
+
+on:
+  workflow_call:
+    inputs:
+      source-branch:
+        required: true
+        type: string
+      target-branch:
+        required: true
+        type: string
+
+jobs:
+  create-and-merge-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Create pull request
+      run: |
+        PR_URL=$(gh pr create --base ${{ inputs.target_branch }} --head ${{ inputs.source_branch }} --title "Auto-generated PR" --body "This PR was created via Github Actions " --json url -q '.url')
+        echo "::set-output name=pr_url::$PR_URL"
+
+    - name: Merge pull request
+      if: success()
+      run: gh pr merge ${{ steps.create-pull-request.outputs.pr_url }} --merge --delete-branch --admin --body "Auto-merged via Github Actions"
