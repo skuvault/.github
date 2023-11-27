@@ -20,6 +20,6 @@ jobs:
       - name: Merge source branch into target branch
         run: |
           git fetch origin
-          git checkout ${{ inputs.target-branch }}
+          git checkout origin/${{ inputs.target-branch }}
           git merge ${{ inputs.source-branch }} -m "Github Actions auto-merge"
           git push
