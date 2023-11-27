@@ -14,13 +14,17 @@ permissions:
   contents: write
 
 jobs:
-  merge:
+  merge-branches:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ env.GH_TOKEN }}
 
       - name: Merge source branch into target branch
         run: |
@@ -29,4 +33,4 @@ jobs:
           git checkout ${{ inputs.target-branch }}
           git pull
           git merge origin/${{ inputs.source-branch }} -m "Github Actions auto-merge"
-          git push --force
+          git push
