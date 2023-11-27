@@ -20,6 +20,12 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
+      - name: 🔍 GH_TOKEN
+        if: env.GH_TOKEN == ''
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
