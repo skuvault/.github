@@ -10,7 +10,8 @@ on:
         required: true
         type: string
 
-permissions: write-all
+permissions: 
+  contents: write
 
 jobs:
   merge:
@@ -28,4 +29,4 @@ jobs:
           git checkout ${{ inputs.target-branch }}
           git pull
           git merge origin/${{ inputs.source-branch }} -m "Github Actions auto-merge"
-          git push
+          git push --force
