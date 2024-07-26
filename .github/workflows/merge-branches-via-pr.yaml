@@ -31,5 +31,10 @@ jobs:
       id: merge-pull-request
       if: success()
       run: |
-        gh pr merge ${{ steps.create-pull-request.outputs.pr_url }} --merge --admin --body "Auto-merged via Github Actions"
-        echo "RESULT_MESSAGE=Completed successfully" >> "$GITHUB_OUTPUT"
+        if gh pr merge ${{ steps.create-pull-request.outputs.pr_url }} --merge --admin --body "Auto-merged via Github Actions"; then
+          echo "RESULT_MESSAGE=Completed successfully" >> "$GITHUB_OUTPUT"
+          echo "Job completed successfully"
+        else
+          echo "RESULT_MESSAGE=Failed" >> "$GITHUB_OUTPUT"
+          echo "Job failed"
+        fi
