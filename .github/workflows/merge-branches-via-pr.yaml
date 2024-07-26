@@ -9,6 +9,8 @@ on:
       target-branch:
         required: true
         type: string
+    outputs:
+      result-message: ${{jobs.create-and-merge-pr.outputs.result-message}}
 
 jobs:
   create-and-merge-pr:
@@ -32,9 +34,9 @@ jobs:
       if: success()
       run: |
         if gh pr merge ${{ steps.create-pull-request.outputs.pr_url }} --merge --admin --body "Auto-merged via Github Actions"; then
-          echo "::set-output RESULT_MESSAGE=Completed successfully"
+          echo "RESULT_MESSAGE=Completed" >> "$GITHUB_OUTPUT"
           echo "PR merge completed successfully"
         else
-          echo "::set-output RESULT_MESSAGE=Failed"
+          echo "RESULT_MESSAGE=Failed" >> "$GITHUB_OUTPUT"
           echo "PR merge failed"
         fi
