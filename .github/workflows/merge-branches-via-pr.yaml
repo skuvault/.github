@@ -10,7 +10,8 @@ on:
         required: true
         type: string
     outputs:
-      result-message: ${{jobs.create-and-merge-pr.outputs.result-message}}
+      result-message: 
+        value: ${{jobs.create-and-merge-pr.outputs.result-message}}
 
 jobs:
   create-and-merge-pr:
@@ -27,7 +28,7 @@ jobs:
     - name: Create pull request
       run: |
         PR_URL=$(gh pr create --base ${{ inputs.target-branch }} --head ${{ inputs.source-branch }} --title "Auto-generated PR" --body "This PR was created via Github Actions ")
-        echo "::set-output name=pr_url::$PR_URL"
+        echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
 
     - name: Merge pull request
       id: merge-pull-request
